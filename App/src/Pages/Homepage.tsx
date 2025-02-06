@@ -54,7 +54,7 @@ const Homepage: React.FC = () => {
           </div>
         </div>
         <div className="right__section">
-          <img src={isMobile ? imageMobile : imageDesktop} alt="Illustration" loading="lazy" />
+          <img src={isMobile ? imageMobile : imageDesktop} alt="Illustration" />
         </div>
       </div>
     </div>
