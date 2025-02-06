@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
+
+      - name: Use the right working directory
+        run: ls -al 
+
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
@@ -20,10 +24,13 @@ jobs:
 
       - name: Install Dependencies
         run: npm install --only=production
+        working-directory: .
+
+      - name: Show Build Output
+        run: ls -al dist
 
       - name: Build Project
         run: npm run build
-
       
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
