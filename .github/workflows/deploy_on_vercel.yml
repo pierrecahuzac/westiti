@@ -17,8 +17,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Show Repository Structure (Debug)
-        run: ls -al  # Vérifie si "App/" est bien là
+      - name: Debug - Vérifier la structure du repo
+        run: ls -al
+        working-directory: App  # ✅ Vérifie si "App/" contient bien les fichiers du projet
 
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -26,28 +27,24 @@ jobs:
           node-version: 20 
 
       - name: Install Dependencies
-        run: npm install 
-        working-directory: App  
-        
-      - name: Install Vite
-        run: npm install -D vite 
-        working-directory: App  
+        run: npm install
+        working-directory: App  # ✅ On installe bien dans App/
 
       - name: Build Project
         run: npm run build
-        working-directory: App 
+        working-directory: App  # ✅ On build bien dans App/
 
-      - name: Show Build Output (Debug)
+      - name: Debug - Vérifier le contenu du build
         run: ls -al
-        working-directory: App/dist 
+        working-directory: App/dist  # ✅ Vérifie si "dist/" est bien généré
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: App 
+        working-directory: App  # ✅ On exécute bien dans App/
 
       - name: Deploy Project Artifacts to Vercel
         run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: App 
+        working-directory: App  # ✅ On déploie bien "App/" et pas "App/App/"
