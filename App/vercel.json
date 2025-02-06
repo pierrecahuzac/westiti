@@ -1,13 +1,6 @@
 {
-  "rewrites": [
-    {
-      "source": "/assets/(.*)",
-      "destination": "/assets/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+  "rewrites":  [
+    {"source": "/(.*)", "destination": "/"}
   ],
   "buildCommand": "npm run build",
   "installCommand": "npm install",
