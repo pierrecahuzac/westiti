@@ -1,6 +1,19 @@
 /* header.scss */
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 400; /* Regular */
+  font-display: swap;
+  src: url('/fonts/be-vietnam-pro-v11-latin-regular.woff2') format('woff2');
+}
 
-@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&display=swap");
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 700; /* Bold */
+  font-display: swap;
+  src: url('/fonts/be-vietnam-pro-v11-latin-700.woff2') format('woff2');
+}
 
 body {
   font-family: "Montserrat", sans-serif;
