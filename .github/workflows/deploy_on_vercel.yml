@@ -30,6 +30,7 @@ jobs:
 
       - name: Build Project
         run: npm run build 
+        working-directory: App
 
       - name: Debug - Vérifier le contenu du build
         run: ls -al App/dist
