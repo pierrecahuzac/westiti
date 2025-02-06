@@ -28,6 +28,7 @@ jobs:
       - name: Install Dependencies
         run: npm install 
         working-directory: App  
+        
       - name: Install Vite
         run: npm install -D vite 
         working-directory: App  
