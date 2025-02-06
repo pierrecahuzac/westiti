@@ -18,12 +18,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Debug - Vérifier la structure du repo
-        run: ls -al  # ✅ Vérifie la structure des dossiers
+        run: ls -al # ✅ Vérifie la structure des dossiers
 
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20 
+          node-version: 20
 
       - name: Debug - Vérifier package.json et scripts npm
         run: npm run
@@ -34,7 +34,7 @@ jobs:
         working-directory: App
         
       - name: Build Project
-        run: npm run build 
+        run: npm run build
         working-directory: App
 
       - name: Debug - Vérifier le contenu du build
