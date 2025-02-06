@@ -26,28 +26,28 @@ jobs:
           node-version: 20 
 
       - name: Install Dependencies
-        run: npm install --only=production
-        working-directory: App  # ✅ Ajout du working directory
+        run: npm install 
+        working-directory: App  
 
       - name: Build Project
         run: npm run build
-        working-directory: App  # ✅ Ajout du working directory
+        working-directory: App 
 
       - name: Show Build Output (Debug)
         run: ls -al
-        working-directory: App/dist  # ✅ Vérifier si `dist/` est bien créé
+        working-directory: App/dist 
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: App  # ✅ Ajout du working directory
+        working-directory: App 
 
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: App  # ✅ Ajout du working directory
+        working-directory: App 
 
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: App  # ✅ Ajout du working directory
+        working-directory: App 
