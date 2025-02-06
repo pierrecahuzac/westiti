@@ -32,8 +32,8 @@ const App = () => {
   }, [])
 
   return (
-    <HelmetProvider basename="/">
-      <BrowserRouter>
+    <HelmetProvider >
+      <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/profile/:userId" element={<Profile />} />
