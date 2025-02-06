@@ -13,8 +13,6 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@types/axios": "^0.14.4",
-    "@types/sass": "^1.45.0",
     "aos": "^2.3.4",
     "axios": "^1.7.7",
     "cypress": "^14.0.0",
