@@ -32,7 +32,7 @@ const App = () => {
   }, [])
 
   return (
-    <HelmetProvider>
+    <HelmetProvider basename="/">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
