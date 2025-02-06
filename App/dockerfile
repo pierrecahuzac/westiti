@@ -1,0 +1,45 @@
+# Étape 1 : Builder l'application
+FROM node:20-alpine AS builder
+
+ARG VITE_API_URL
+ARG VPS_EMAIL
+ARG DOMAIN
+ARG VPS_API_URL
+ARG VPS_APP_URL
+ARG VITE_URL_PHOTO
+
+
+# Définir le répertoire de travail
+WORKDIR /usr/src/App
+
+# Copier les fichiers de dépendances
+COPY package*.json ./
+
+# Installer les dépendances
+# RUN npm install
+RUN npm ci --only=production
+
+# Copier tout le code source
+COPY . .
+
+
+# Construire l'application
+RUN VITE_URL_PHOTO=${VITE_URL_PHOTO} VPS_TRAEFIK_URL=${VPS_TRAEFIK_URL}  VPS_ADMINER_URL=${VPS_ADMINER_URL}  VPS_API_URL=${VPS_API_URL} VPS_EMAIL=${VPS_EMAIL}  VPS_APP_URL=${VPS_APP_URL} VITE_API_URL=${VITE_API_URL}  DOMAIN=${DOMAIN} npm run build
+# RUN npm run build
+
+# Étape 2 : Créer l'image finale avec les fichiers construits
+FROM node:20-alpine
+
+# Définir le répertoire de travail pour le serveur
+WORKDIR /usr/src/App
+
+# Installer le serveur serve
+RUN npm install -g serve
+
+# Copier les fichiers construits depuis l'étape précédente
+COPY --from=builder /usr/src/App/dist ./dist
+# Exposer le port
+EXPOSE 4173
+
+# Démarrer l'application avec serve
+CMD ["serve", "-l", "4173", "-s", "dist"]

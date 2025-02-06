@@ -1,0 +1,62 @@
+name: deploy on VPS
+on:
+  push:
+    branches: [deploy]
+
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Deploy using ssh
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            key: ${{ secrets.PRIVATE_KEY }}
+            port: 22
+            script: |
+              set -e  # fail on error
+              echo "==== Pulling latest changes ===="
+              cd ~/home/ubuntu/
+              git pull origin deploy
+              git status
+
+
+              echo "==== Building Frontend ===="
+              cd /westiti/App
+              npm install
+              npm run build
+
+
+              cd ..
+
+
+              echo "==== Building Backend ===="
+              cd /Api
+              npm install
+              npm run build
+
+
+              cd ..
+              echo "==== Updating Docker ===="
+              sudo docker compose down
+              sudo docker compose build --no-cache
+              sudo docker compose up -d
+
+
+              echo "==== Prisma Migration ===="
+              npm run prisma:generate
+              npm run prisma:migrate
+
+
+              echo "==== Cleaning up ===="
+              sudo docker system prune -f
+
+
+              echo "==== Deployment completed ===="
+
+
+
+
+

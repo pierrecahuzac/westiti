@@ -1,0 +1,69 @@
+/* modale.scss */
+
+.modale__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #171420;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modale__box {
+  width: 80%;
+  max-width: 800px;
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  position: relative;
+}
+
+.modale__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.modale__content {
+  padding: 40px;
+  text-align: center;
+}
+
+.modale__title {
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modale__btn {
+  width: 50%;
+}
+.modale__delete-account {
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  position: absolute;
+  top: 60px;
+  left: 0;
+}
+.modale__container {
+  width: 80%;
+  height: calc(100% - 99px);
+  margin: auto;
+  display: flex;
+  background-color: #636374;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

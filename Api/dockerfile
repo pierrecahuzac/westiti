@@ -1,0 +1,20 @@
+FROM node:20-alpine
+
+WORKDIR /usr/src/api
+
+COPY package*.json ./
+
+RUN apk update && apk add openssl
+
+# RUN npm install
+RUN npm ci --only=production
+
+COPY . .
+
+RUN npm run build
+
+RUN npx prisma generate
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start:prod"]

@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login__box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  max-width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.login__box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.signup__text {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.signup__text .signup__link {
+  color: #535bf2;
+  text-decoration: none;
+}
+
+.signup__text .signup__link:hover {
+  text-decoration: underline;
+}
+
+.login__box .user__box {
+  position: relative;
+}
+
+.login__box .user__box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login__box .user__box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.login__box .user__box input:focus ~ label,
+.login__box .user__box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #636374;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .login__box {
+    width: 90%;
+    padding: 20px;
+  }
+}

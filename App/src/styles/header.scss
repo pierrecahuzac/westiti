@@ -1,0 +1,374 @@
+/* header.scss */
+
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #ececee;
+  background-color: #1f2029;
+}
+
+.header {
+  position: relative;
+  z-index: 100;
+  &__logout {
+    font-size: 7vh;
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;
+    color: #ececee;
+    transition: all 250ms linear;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+      color: #a00022;
+      cursor: pointer;
+    }
+  }
+}
+.logo {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  display: block;
+  z-index: 10;
+  transition: all 250ms linear;
+  position: fixed;
+}
+
+.logo img {
+  height: 60px;
+  width: auto;
+  display: block;
+  border-radius: 30px;
+  position: relative;
+  z-index: 11;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: #636374;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
+  animation: bubble-transform 7s linear infinite;
+  transition: transform 250ms ease, opacity 250ms ease;
+}
+
+@keyframes bubble-transform {
+  0%,
+  100% {
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+  }
+  14% {
+    border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%;
+  }
+  28% {
+    border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%;
+  }
+  42% {
+    border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%;
+  }
+  56% {
+    border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%;
+  }
+  70% {
+    border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%;
+  }
+  84% {
+    border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%;
+  }
+}
+
+.logo:hover::after {
+  transform: translate(-50%, -50%) scale(1.1);
+  opacity: 1;
+}
+
+.menu-icon {
+  position: fixed;
+  top: 63px;
+  right: 75px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 2px;
+  background-color: #ececee;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.menu-icon::before {
+  top: 8px;
+}
+
+.menu-icon::after {
+  top: 20px;
+}
+
+.menu-open .menu-icon::before {
+  transform: rotate(45deg);
+  top: 14px;
+}
+
+.menu-open .menu-icon::after {
+  transform: rotate(-45deg);
+  top: 14px;
+}
+
+.nav {
+  position: fixed;
+  top: 33px;
+  right: 50px;
+  display: block;
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  margin: 0;
+  z-index: 9;
+  overflow: hidden;
+  box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.3);
+  background-color: #353746;
+  animation: border-transform 7s linear infinite;
+  transition: top 350ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+    right 350ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 250ms 300ms ease,
+    width 350ms 400ms cubic-bezier(0.23, 1, 0.32, 1),
+    height 350ms 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes border-transform {
+  0%,
+  100% {
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+  }
+  14% {
+    border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%;
+  }
+  28% {
+    border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%;
+  }
+  42% {
+    border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%;
+  }
+  56% {
+    border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%;
+  }
+  70% {
+    border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%;
+  }
+  84% {
+    border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%;
+  }
+}
+
+.menu-open .nav {
+  animation-play-state: paused;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 200%;
+  height: 200%;
+  transition: top 350ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+    right 350ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 250ms 300ms ease,
+    width 350ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+    height 350ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.nav ul {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: 6;
+  text-align: center;
+  transform: translateY(-50%);
+  list-style: none;
+}
+
+.nav ul li {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 10px 0;
+  text-align: center;
+  list-style: none;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px);
+  transition: all 250ms linear;
+}
+
+.nav ul li a {
+  font-size: 7vh;
+  text-transform: uppercase;
+  line-height: 1.2;
+  font-weight: 600;
+  display: inline-block;
+  position: relative;
+  color: #ececee;
+  transition: all 250ms linear;
+}
+
+.nav ul li a:hover {
+  text-decoration: none;
+  color: #9898d1;
+}
+
+.nav ul li a::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  content: "";
+  height: 2vh;
+  margin-top: -1vh;
+  width: 0;
+  left: 0;
+  background-color: #353746;
+  opacity: 0.8;
+  transition: width 250ms linear;
+}
+
+.nav ul li a:hover::after {
+  width: 100%;
+}
+
+.menu-open .nav ul li {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 350ms ease, transform 250ms ease;
+}
+
+.menu-open .nav__footer {
+  margin-top: 100px;
+  font-size: 0.8rem;
+  color: #ececee;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* Ajustement des délais de transition pour les éléments du menu */
+.nav ul li {
+  transition-delay: 0ms;
+}
+
+.nav ul li:nth-child(1) {
+  transition-delay: 200ms;
+}
+
+.nav ul li:nth-child(2) {
+  transition-delay: 150ms;
+}
+
+.nav ul li:nth-child(3) {
+  transition-delay: 100ms;
+}
+
+.nav ul li:nth-child(4) {
+  transition-delay: 50ms;
+}
+
+.nav ul li:nth-child(5) {
+  transition-delay: 0ms;
+}
+
+.menu-open .nav ul li:nth-child(1) {
+  transition-delay: 400ms;
+}
+
+.menu-open .nav ul li:nth-child(2) {
+  transition-delay: 480ms;
+}
+
+.menu-open .nav ul li:nth-child(3) {
+  transition-delay: 560ms;
+}
+
+.menu-open .nav ul li:nth-child(4) {
+  transition-delay: 640ms;
+}
+
+.menu-open .nav ul li:nth-child(5) {
+  transition-delay: 720ms;
+}
+
+@media screen and (max-width: 991px) {
+  .menu-icon {
+    right: 55px;
+  }
+  .logo {
+    left: 30px;
+  }
+  .nav {
+    right: 30px;
+  }
+  .nav ul li a {
+    font-size: 8vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    right: 35px;
+    top: 30px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .menu-icon::before,
+  .menu-icon::after {
+    width: 20px;
+    height: 2px;
+  }
+
+  .logo {
+    top: 30px;
+    left: 30px;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .nav {
+    top: 10px;
+    right: 10px;
+  }
+
+  .nav ul li a {
+    font-size: 1.2rem; /* Plus petit pour les écrans très étroits */
+  }
+
+  .header__logout {
+    font-size: 1.2rem;
+  }
+
+  .menu-open .nav__footer {
+    font-size: 0.8rem;
+  }
+}
