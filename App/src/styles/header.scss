@@ -1,22 +1,22 @@
 /* header.scss */
 @font-face {
-  font-family: 'Be Vietnam Pro';
+  font-family: "Be Vietnam Pro";
   font-style: normal;
   font-weight: 400; /* Regular */
   font-display: swap;
-  src: url('/fonts/be-vietnam-pro-v11-latin-regular.woff2') format('woff2');
+  src: url("/fonts/be-vietnam-pro-v11-latin-regular.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'Be Vietnam Pro';
+  font-family: "Be Vietnam Pro";
   font-style: normal;
   font-weight: 700; /* Bold */
   font-display: swap;
-  src: url('/fonts/be-vietnam-pro-v11-latin-700.woff2') format('woff2');
+  src: url("/fonts/be-vietnam-pro-v11-latin-700.woff2") format("woff2");
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Be Vietnam Pro";
   font-weight: 300;
   font-size: 15px;
   line-height: 1.7;
