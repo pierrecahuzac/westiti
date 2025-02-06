@@ -13,7 +13,18 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 
 
+      - name: Install Dependencies
+        run: npm install --only=production
+
+      - name: Build Project
+        run: npm run build
+
+      
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
@@ -22,6 +33,6 @@ jobs:
 
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-        
+
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
