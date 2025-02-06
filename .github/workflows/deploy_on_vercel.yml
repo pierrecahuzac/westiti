@@ -28,9 +28,11 @@ jobs:
       - name: Debug - Vérifier package.json et scripts npm
         run: npm run
         working-directory: App
-      - name: Install Dependencies
-        run: npm ci
 
+      - name: Install Dependencies
+        run: npm install
+        working-directory: App
+        
       - name: Build Project
         run: npm run build 
         working-directory: App
