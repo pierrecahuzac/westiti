@@ -19,7 +19,6 @@ import { acceptedFormats } from "../Utils/acceptedFormats";
 
 import BackArrowIcon from "../assets/img/back-arrow.svg";
 
-import "../styles/event.scss";
 import Modale from "../Components/Modale";
 import Button from "../Components/Button";
 import WeedingPhoto from "../assets/img/mariage.webp";
@@ -34,6 +33,7 @@ const eventTypeImages: Record<string, string> = {
   soiree_etudiante: PartyPhoto,
   autres: OtherPhoto
 };
+import "../styles/event.scss";
 
 const Event: FC = (): JSX.Element => {
   const { onError, onSuccess } = useToast();
