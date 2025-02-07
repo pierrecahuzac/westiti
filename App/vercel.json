@@ -1,7 +1,9 @@
 {
-  "redirects": [
-    { "source": "/(.*)", "destination": "/", "permanent": false }
+ "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
+  "cleanUrls": true,
+  "trailingSlash": false,
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "env": {
