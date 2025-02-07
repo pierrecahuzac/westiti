@@ -1,9 +1,9 @@
 {
- "rewrites": [
+ "routes": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],
-  "cleanUrls": true,
-  "trailingSlash": false,
+  
+  
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "env": {
