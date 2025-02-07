@@ -1,13 +1,5 @@
 {
   "routes": [
-    {
-      "src": "/[^.]+",
-      "dest": "/"
-    }
-  ],
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "env": {
-    "NODE_ENV": "production"
-  }
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 }
