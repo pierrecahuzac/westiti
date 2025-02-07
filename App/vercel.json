@@ -1,6 +1,9 @@
 {
-  "rewrites":  [
-    {"source": "/(.*)", "destination": "/"}
+  "routes": [
+    {
+      "src": "/[^.]+",
+      "dest": "/"
+    }
   ],
   "buildCommand": "npm run build",
   "installCommand": "npm install",
