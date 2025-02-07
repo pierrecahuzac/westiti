@@ -47,4 +47,4 @@ jobs:
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
-        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --cwd App/dist
+        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --cwd App
