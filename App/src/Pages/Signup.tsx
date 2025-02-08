@@ -107,7 +107,7 @@ const Signup = () => {
       showLoader(); // Active le loader
       const body = {
         password: signup.password,
-        email: signup.email,
+        email: signup.email.toLowerCase(),
         name: signup.username,
         password_confirmation : signup.password_confirmation
       };
