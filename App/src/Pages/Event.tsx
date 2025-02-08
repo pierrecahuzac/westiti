@@ -368,6 +368,7 @@ const Event: FC = (): JSX.Element => {
                     alt={
                       "photo" + photo.url.replace("public/uploads/photos/", "")
                     }
+                    loading="lazy"
                     style={{ width: "300px", height: "300px" }}
                   />
                   <Button
@@ -389,6 +390,7 @@ const Event: FC = (): JSX.Element => {
                     alt={
                       "photo" + photo.url.replace("public/uploads/photos/", "")
                     }
+                    loading="lazy"
                     style={{ width: "300px", height: "300px" }}
                   />
                 </div>
