@@ -193,9 +193,6 @@
   gap: 20px;
   justify-content: center;
   margin: 20px;
-  flex-direction: row;
-  width: 100%;
-  padding-top: 2rem;
 }
 
 .img-div {
@@ -274,7 +271,16 @@
     width: 100% !important;
   }
 }
-
+.event__files-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px;
+  flex-direction: row;
+  width: 100%;
+  padding-top: 2rem;
+}
 .event__photoslist {
   display: flex;
   flex-wrap: wrap;
