@@ -21,6 +21,11 @@ import {
 import { CreateEventFormProps } from "../@types/CreateEventFormProps";
 import { EventProps } from "../@types/EventProps";
 
+import WeedingPhoto from "../assets/img/mariage.webp";
+import BirthdayPhoto from "../assets/img/anniversaire.webp";
+import PartyPhoto from '../assets/img/soiree.webp'
+import OtherPhoto from "../assets/img/autres.webp";
+
 import "../styles/modale.scss";
 import "../styles/button.scss";
 import "../styles/input.scss";
@@ -29,13 +34,13 @@ import Loading from "../Components/Loading";
 
 const eventImages: { [key: string]: string } = {
   mariage:
-    "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?q=80&w=1990&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    WeedingPhoto,
   anniversaire:
-    "https://images.unsplash.com/photo-1583875762487-5f8f7c718d14?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    BirthdayPhoto,
   soiree:
-    "https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80&w=1924&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    PartyPhoto,
   autres:
-    "https://images.unsplash.com/photo-1519214605650-76a613ee3245?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    OtherPhoto,
 };
 
 const Dashboard: React.FC = () => {
@@ -45,7 +50,7 @@ const Dashboard: React.FC = () => {
   const [isCreateEventModalOpen, setIsCreateEventModalOpen] = useState(false);
   const [isJoinEventModalOpen, setIsJoinEventModalOpen] = useState(false);
   const [eventCode, setEventCode] = useState<string>("");
-  const [eventsList, setEventsList] = useState<EventProps[] | [] | {message: string}>([]);
+  const [eventsList, setEventsList] = useState<EventProps[] | [] | { message: string }>([]);
   const [loading, setLoading] = useState(false)
   const [createEventForm, setCreateEventForm] = useState<CreateEventFormProps>({
     name: "",
@@ -57,7 +62,7 @@ const Dashboard: React.FC = () => {
     picture: eventImages["mariage"],
     creator_id: localStorage.getItem("userId"),
   });
-("access_token");
+  ("access_token");
   const userId: string | null = localStorage.getItem("userId");
 
   // Récupération des événements de l'utilisateur
@@ -98,7 +103,7 @@ const Dashboard: React.FC = () => {
           type: "autres", // Réinitialise le type
           picture: eventImages["mariage"], // Réinitialise l'image
           creator_id: localStorage.getItem("userId"),
-        });        
+        });
         const eventsUser = await getAllEventsUser();
         setEventsList(eventsUser);
         onSuccess("Événement créé avec succès.");
@@ -116,8 +121,7 @@ const Dashboard: React.FC = () => {
         setIsJoinEventModalOpen(false);
         setEventCode("");
         onSuccess(
-          `Vous êtes maintenant membre de cet l'événement ${
-            response.data[response.data.length - 1].event_id.name
+          `Vous êtes maintenant membre de cet l'événement ${response.data[response.data.length - 1].event_id.name
           }`
         );
         const eventsUser = await getAllEventsUser();
@@ -163,9 +167,9 @@ const Dashboard: React.FC = () => {
             ))
           ) : (
             <p style={
-            {  
-              fontSize: "2rem"
-          }
+              {
+                fontSize: "2rem"
+              }
             }>Aucun événement trouvé.</p>
           )}
         </div>

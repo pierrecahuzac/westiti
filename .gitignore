@@ -16,3 +16,4 @@ traefik/acme.json
 /traefik/acme.json
 ./traefik/acme.json
 ./traefik/acme.json
+/App/cypress
