@@ -37,6 +37,9 @@
 .modale__content {
   padding: 40px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .modale__title {
