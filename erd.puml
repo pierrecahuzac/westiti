@@ -1,0 +1,28 @@
+@startuml usecase
+actor "Visiteur" as V
+actor "Utilisateur" as U
+actor "Utilisateur Connecté" as UC
+
+left to right direction
+
+rectangle "App" {
+
+    rectangle "Espace Connexion/Inscription" {
+        V --> (Créer un compte)
+        U --> (Connexion avec email/mot de passe)
+    }
+    rectangle "Tableau de bord" {
+        UC --> (Accéder à un événement)
+        UC --> (Créer un événement)
+    }
+    rectangle "Événement" {
+        UC --> (Voir les informations de l'événement)
+        UC --> (Quitter l'événement)
+        UC --> (Téléverser des photos)
+        UC --> (Voir les photos que j'ai téléversées)
+    }    
+    rectangle "Espace Compte" {
+        UC --> (Supprimer son compte)
+    }
+}
+@enduml

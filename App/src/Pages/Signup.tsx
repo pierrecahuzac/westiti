@@ -123,14 +123,8 @@ const Signup = () => {
           withCredentials: true
         }
       );
-           localStorage.setItem("isConnected", "true");
-      localStorage.setItem("userId", response.data.id);
-      localStorage.setItem("username", response.data.name);
-      localStorage.setItem("email", response.data.email);
-      localStorage.setItem("avatar", response.data.avatar);
       onSuccess("Compte créé avec succès.");
-      navigate(`/signin`);
-    
+      navigate(`/signin`);    
     } catch (error) {
       onError("Erreur:" + error);
       console.log("Erreur:", error);

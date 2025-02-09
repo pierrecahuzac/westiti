@@ -42,7 +42,6 @@ axios.defaults.withCredentials = true;
     const userId = localStorage.getItem("userId");
     const name = localStorage.getItem("username");
     const email = localStorage.getItem("email");
-
     setUser({
       ...user,
       id: userId,
@@ -51,7 +50,6 @@ axios.defaults.withCredentials = true;
       avatar:
         "https://t3.ftcdn.net/jpg/01/26/91/78/360_F_126917812_XlWgkaV9f81Hde4wvmvJWM3huJRvy5EM.webp",
     });
-
     if (isConnected === "false") {
       navigate("/");
     }
