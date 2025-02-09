@@ -109,12 +109,11 @@ const Signup = () => {
         password: signup.password,
         email: signup.email.toLowerCase(),
         name: signup.username,
-        password_confirmation : signup.password_confirmation
+        password_confirmation: signup.password_confirmation
       };
-      
-      const response: AxiosResponse = await axios.post(
+
+      await axios.post(
         `${import.meta.env.VITE_API_URL}/auth/register`,
-          // `${import.meta.env.VITE_API_URL}/auth/register`,
         body,
         {
           headers: {
@@ -124,7 +123,7 @@ const Signup = () => {
         }
       );
       onSuccess("Compte créé avec succès.");
-      navigate(`/signin`);    
+      navigate(`/signin`);
     } catch (error) {
       onError("Erreur:" + error);
       console.log("Erreur:", error);
