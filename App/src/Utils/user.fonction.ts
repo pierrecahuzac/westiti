@@ -11,10 +11,9 @@ export const handleDeleteUser = async (
     const response = await axios.delete(
       `${import.meta.env.VITE_API_URL}/user/${userId}`,
       {
-        headers: {
+      headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
+        }, 
         withCredentials: true,
       }
     );

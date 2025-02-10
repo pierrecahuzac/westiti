@@ -25,16 +25,16 @@ const Signin = () => {
     showLoader();
     e.preventDefault();
     try {
-      const response: any = await submitLogin(e, password, email);
+      const response: any = await submitLogin(e, password, email.toLowerCase());
       
       if (response.status === 401) {
         onError(response.response.data.message);
       }
-      if (response !== undefined) {
-       
+      if (response !== undefined) {       
         localStorage.setItem("isConnected", "true");
         localStorage.setItem("userId", response.data.user.id);
         localStorage.setItem("username", response.data.user.username);
+        localStorage.setItem("email", response.data.user.email);
         onSuccess("Connexion réussie");
         navigate(`/dashboard/${localStorage.getItem("userId")}`);
         hideLoader();

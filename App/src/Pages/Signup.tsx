@@ -1,11 +1,11 @@
 import { useState } from "react";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import passwordValidator from "password-validator";
 import { Link, useNavigate, /* useNavigate */ } from "react-router-dom";
 import useToast from "../Hooks/useToast";
 import validator from "validator";
 import Button from "../Components/Button";
-import Input from "../Components/Input";
+import Input from "../Components/Input"
 import AuthLayout from "../Components/AuthLayout";
 import { useLoader } from "../contexts/LoaderContext";
 
@@ -107,14 +107,13 @@ const Signup = () => {
       showLoader(); // Active le loader
       const body = {
         password: signup.password,
-        email: signup.email,
+        email: signup.email.toLowerCase(),
         name: signup.username,
-        password_confirmation : signup.password_confirmation
+        password_confirmation: signup.password_confirmation
       };
-      
-      const response: AxiosResponse = await axios.post(
+
+      await axios.post(
         `${import.meta.env.VITE_API_URL}/auth/register`,
-          // `${import.meta.env.VITE_API_URL}/auth/register`,
         body,
         {
           headers: {
@@ -123,14 +122,8 @@ const Signup = () => {
           withCredentials: true
         }
       );
-           localStorage.setItem("isConnected", "true");
-      localStorage.setItem("userId", response.data.id);
-      localStorage.setItem("username", response.data.name);
-      localStorage.setItem("email", response.data.email);
-      localStorage.setItem("avatar", response.data.avatar);
       onSuccess("Compte créé avec succès.");
       navigate(`/signin`);
-    
     } catch (error) {
       onError("Erreur:" + error);
       console.log("Erreur:", error);

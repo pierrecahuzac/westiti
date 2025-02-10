@@ -16,6 +16,7 @@ import NotFound from "./Pages/NotFound";
 import "aos/dist/aos.css";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
+
 //import { disableReactDevTools } from "./Utils/disableReactDevTools";
 
 // Disable REACT DevTOOL production mode
@@ -32,8 +33,8 @@ const App = () => {
   }, [])
 
   return (
-    <HelmetProvider>
-      <BrowserRouter>
+    <HelmetProvider >
+      <BrowserRouter /* basename="/" */>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/profile/:userId" element={<Profile />} />
