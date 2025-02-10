@@ -9,7 +9,7 @@ async function bootstrap() {
   app.use(cookieParser());
   app.enableCors({
     origin: [
-      "https://app.pierrecahuzac.online",
+      "http://app.localhost",
     ],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,

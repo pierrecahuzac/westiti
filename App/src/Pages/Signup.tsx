@@ -13,8 +13,6 @@ import "../styles/signup.scss";
 import "../styles/input.scss";
 import "../styles/button.scss";
 import "aos/dist/aos.css";
-//import { submitLogin } from "../Utils/user.fonction";
-// import { submitLogin } from "../Utils/user.fonction";
 
 type UserSignupProps = {
   email: string;
@@ -119,14 +117,15 @@ const Signup = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: true
+         // withCredentials: true
         }
       );
       onSuccess("Compte créé avec succès.");
       navigate(`/signin`);
-    } catch (error) {
-      onError("Erreur:" + error);
-      console.log("Erreur:", error);
+    } catch (error:any) {
+      if (error.status === 401) {
+        onError(error.response.data.message)
+      }
       hideLoader();
     }
   };

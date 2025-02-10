@@ -1,77 +1,58 @@
-import { submitLogin } from "../user.fonction";
-import {describe, expect, it, beforeAll, afterEach, afterAll, vi} from "vitest";
-
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import axios from "axios";
-import MockAdapter from "axios-mock-adapter";
+import { submitLogin } from "../../Utils/user.fonction"; 
 
-const mockedCredentials = {
-  email: "test@test.com",
-  password: "T35t!!32**",
-};
-
-describe("submitLogin", () => {
-  let mock 
-
-  beforeAll(() => {
-    mock = new MockAdapter(axios);
+describe("submitLogin function", () => {
+  beforeEach(() => {
+    vi.restoreAllMocks(); 
   });
+ 
+  it("should return a valid response when sucess auth", async () => {
 
-  afterEach(() => {
-    mock.reset(); 
-  });
+    const fakeEvent = { preventDefault: vi.fn() };
 
-  afterAll(() => {
-    mock.restore(); 
-  });
-  
-  it("use should login with goods credentials", async () => {
-    // awaiting good response
-    const mockResponse = {
+    vi.spyOn(axios, "post").mockResolvedValueOnce({
       data: {
-        id: "123456789",
-        username: "test",       
-        access_token:        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+        id: "123",
+        username: "TestUser",
+        access_token: "fake_token_123",
       },
-    };
-    // user mocked datas 
-    const email = mockedCredentials.email;
-    const password = mockedCredentials.password;
-   
-    mock
-      .onPost(`${import.meta.env.VITE_API_URL}/auth/login`)
-      .reply(200, mockResponse);
-    
-    const mockEvent = { preventDefault: vi.fn() };
-    const response = await submitLogin(mockEvent,password, email);
-    
-    expect(response.status).toBe(200);
-    expect(response.data).toStrictEqual(mockResponse);
+    });
+
+    const response = await submitLogin(fakeEvent, "password123", "test@example.com");
+
+    expect(response?.data).toEqual({
+      id: "123",
+      username: "TestUser",
+      access_token: "fake_token_123",
+    });
+
+    expect(fakeEvent.preventDefault).toHaveBeenCalled();
   });
 
-  it("should failed with bad credentials", async () => {
-    // awaiting bad response
-    const mockErrorResponse = {
+  it("should return a 401 error with bad credentials", async () => {
+    const fakeEvent = { preventDefault: vi.fn() };
+
+
+    vi.spyOn(axios, "post").mockRejectedValueOnce({
       response: {
         status: 401,
-        data: {
-          message: "Bad credentials",
-        },
+        data: { message: "Bad credentials" },
       },
-    };
-    mock
-      .onPost(`${import.meta.env.VITE_API_URL}/user/login`)
-      .reply(401, mockErrorResponse);
+    });
 
-    const mockEvent = { preventDefault: vi.fn() };
-    try {
-      await submitLogin(
-        mockEvent,
-        mockedCredentials.password,
-        mockedCredentials.email
-      );
-    } catch (error) {
-      expect(error.response.status).toBe(401);
-      expect(error.response.data.message).toBe("Bad credentials");
-    }
+    const response = await submitLogin(fakeEvent, "wrongpassword", "wrong@example.com");
+
+    expect(response.response.status).toBe(401);
+  });
+
+  it("shoud rerturn a network error", async () => {
+    const fakeEvent = { preventDefault: vi.fn() };
+
+    vi.spyOn(axios, "post").mockRejectedValueOnce(new Error("Network Error"));
+    const mockedLogin = vi.fn(submitLogin)
+    const response = await mockedLogin(fakeEvent, "password123", "test@example.com");
+
+    expect(response.message).toBe("Network Error");
   });
 });

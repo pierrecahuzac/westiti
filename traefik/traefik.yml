@@ -2,45 +2,46 @@ api:
   dashboard: true
   # insecure: true
 
-tls: 
-   certificates:
-     - certFile: /etc/letsencrypt/live/${DOMAIN}/fullchain.pem
-       keyFile: /etc/letsencrypt/live/${DOMAIN}/privkey.pem
-     - certFile: /etc/letsencrypt/live/app.${DOMAIN}/fullchain.pem
-       keyFile: /etc/letsencrypt/live/app.${DOMAIN}/privkey.pem
-     - certFile: /etc/letsencrypt/live/api.${DOMAIN}/fullchain.pem
-       keyFile: /etc/letsencrypt/live/api.${DOMAIN}/privkey.pem
-     - certFile: /etc/letsencrypt/live/adminer.${DOMAIN}/fullchain.pem
-       keyFile: /etc/letsencrypt/live/adminer.${DOMAIN}/privkey.pem
+# tls: 
+#    certificates:
+#      - certFile: /etc/letsencrypt/live/${DOMAIN}/fullchain.pem
+#        keyFile: /etc/letsencrypt/live/${DOMAIN}/privkey.pem
+#      - certFile: /etc/letsencrypt/live/app.${DOMAIN}/fullchain.pem
+#        keyFile: /etc/letsencrypt/live/app.${DOMAIN}/privkey.pem
+#      - certFile: /etc/letsencrypt/live/api.${DOMAIN}/fullchain.pem
+#        keyFile: /etc/letsencrypt/live/api.${DOMAIN}/privkey.pem
+#      - certFile: /etc/letsencrypt/live/adminer.${DOMAIN}/fullchain.pem
+#        keyFile: /etc/letsencrypt/live/adminer.${DOMAIN}/privkey.pem
 entryPoints:
   web:
     address: ":80"
   # websecure si https
-  websecure:   
-    address: ":443"
-certificatesResolvers:
-  westiti-resolver:
-    acme:
-      email: ${VPS_EMAIL}
-      #email: app@pierrecahuzac.online
-      storage: /etc/traefik/acme.json
-      httpChallenge:
-        # used during the challenge
-        entryPoint: web
+  # websecure:   
+  #   address: ":443"
+# certificatesResolvers:
+#   westiti-resolver:
+#     acme:
+#       email: ${VPS_EMAIL}
+#       #email: app@pierrecahuzac.online
+#       storage: /etc/traefik/acme.json
+#       httpChallenge:
+#         # used during the challenge
+#         entryPoint: web
+
 providers:
   docker:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
 
-logs:
-  level: "DEBUG"
-  filePath: "/var/log/traefik.log"
-  format: "json"
-  maxSize: 1
-  maxBackups: 3
+# logs:
+#   level: "DEBUG"
+#   filePath: "/var/log/traefik.log"
+#   format: "json"
+#   maxSize: 1
+#   maxBackups: 3
 
-accesslog:
-  addInternals: true
-  format: "json"
-  filePath: "/var/log/access.log"
+# accesslog:
+#   addInternals: true
+#   format: "json"
+#   filePath: "/var/log/access.log"
 

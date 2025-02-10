@@ -1,7 +1,7 @@
 {
     "name": "westiti",   
     "scripts": {
-        "docker:restart": "docker compose down && docker compose --env-file .env build --no-cache && docker compose --env-file .env up && docker exec -it api-westiti npx prisma migrate deploy && docker exec -it api-westiti npx prisma db seed"
+        "docker:restart": "docker compose down && docker compose --env-file .env build --no-cache && docker compose --env-file .env up && docker exec -it api-westiti npx prisma migrate deploy"
     }
      
   }

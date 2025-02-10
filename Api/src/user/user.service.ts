@@ -30,19 +30,15 @@ export class UserService {
     if (createUserDto.password.length < 12) {
       throw new UnauthorizedException({ message: 'Mot de passe trop court' });
     }
-    const data = await this.prismaService.user.upsert({
-      where: {
-        email: createUserDto.email,
-      },
-      update: {},
-      create: {
+    const data = await this.prismaService.user.create({
+      data: {
         name: createUserDto.name,
         email: createUserDto.email,
         password: hashedPassword,
         avatar: 'test',
       },
     });
-  
+
     const result = {
       name: data.name,
       email: data.email,

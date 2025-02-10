@@ -80,15 +80,15 @@ export class AuthService {
     const payload = { id: user.id, email: user.email };
     
     const token = await this.jwtService.signAsync(payload);
-
+    console.log('Token généré :', token);
+    
     res.cookie('access_token', token, {
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
-      secure:true, 
-      sameSite: "none",
+      secure:false, 
+      sameSite: "lax",
     });
-    
-    
+    console.log('Cookie envoyé :', res.getHeaders()['set-cookie']);
     return {
       message: 'Connexion réussie',
       user: { id: user.id, username: user.name },
