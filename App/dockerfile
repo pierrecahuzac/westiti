@@ -1,12 +1,12 @@
 # Étape 1 : Builder l'application
-FROM node:20-alpine AS builder
-
+FROM node:20-alpine
+ENV NODE_TLS_REJECT_UNAUTHORIZED=0
 # ARG VITE_API_URL
 # ARG VPS_EMAIL
 # ARG DOMAIN
 # ARG VPS_API_URL
 # ARG VPS_APP_URL
-# ARG VITE_URL_PHOTO
+# ARG VITE_PHOTO_URL
 
 # Définir le répertoire de travail
 WORKDIR /usr/src/App
@@ -22,7 +22,7 @@ RUN npm ci --only=development
 COPY . .
 
 # Construire l'application
-# RUN VITE_URL_PHOTO=${VITE_URL_PHOTO} VPS_TRAEFIK_URL=${VPS_TRAEFIK_URL}  VPS_ADMINER_URL=${VPS_ADMINER_URL}  VPS_API_URL=${VPS_API_URL} VPS_EMAIL=${VPS_EMAIL}  VPS_APP_URL=${VPS_APP_URL} VITE_API_URL=${VITE_API_URL}  DOMAIN=${DOMAIN} npm run build
+# RUN VITE_PHOTO_URL=${VITE_PHOTO_URL} VPS_TRAEFIK_URL=${VPS_TRAEFIK_URL}  VPS_ADMINER_URL=${VPS_ADMINER_URL}  VPS_API_URL=${VPS_API_URL} VPS_EMAIL=${VPS_EMAIL}  VPS_APP_URL=${VPS_APP_URL} VITE_API_URL=${VITE_API_URL}  DOMAIN=${DOMAIN} npm run build
 # RUN npm run build
 
 # # Étape 2 : Créer l'image finale avec les fichiers construits

@@ -28,6 +28,10 @@ export class AuthGuard implements CanActivate {
     }
 
     const request = context.switchToHttp().getRequest();
+
+    console.log('📌 Headers reçus:', request.headers);
+  console.log('📌 Cookies reçus:', request.cookies);
+
     const token = this.extractTokenFromRequest(request);
     // const token = this.extractTokenFromHeader(request);
 
@@ -42,6 +46,8 @@ export class AuthGuard implements CanActivate {
       // so that we can access it in our route handlers
       request['user'] = payload;
     } catch {
+      // @ts-ignore
+      console.error('❌ Erreur lors de la vérification du token:', error);
       throw new UnauthorizedException();
     }
     return true;

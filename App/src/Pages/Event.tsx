@@ -364,7 +364,7 @@ const Event: FC = (): JSX.Element => {
                   id={photo.id}
                 >
                   <img
-                    src={`${import.meta.env.VITE_URL_PHOTO}/${photo.url}`}
+                    src={`${import.meta.env.VITE_PHOTO_URL}/${photo.url}`}
                     alt={
                       "photo" + photo.url.replace("public/uploads/photos/", "")
                     }

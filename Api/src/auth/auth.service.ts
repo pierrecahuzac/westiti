@@ -86,12 +86,12 @@ export class AuthService {
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
       secure:false, 
-      sameSite: "lax",
+      sameSite: "none",
     });
     console.log('Cookie envoyé :', res.getHeaders()['set-cookie']);
     return {
       message: 'Connexion réussie',
-      user: { id: user.id, username: user.name },
+      user: { id: user.id, username: user.name, email: user.email },
     };
   }
 }
