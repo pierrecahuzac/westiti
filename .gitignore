@@ -17,3 +17,5 @@ traefik/acme.json
 ./traefik/acme.json
 ./traefik/acme.json
 /App/cypress
+/App/coverage
+./App/coverage

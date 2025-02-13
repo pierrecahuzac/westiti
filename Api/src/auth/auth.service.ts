@@ -85,7 +85,7 @@ export class AuthService {
     res.cookie('access_token', token, {
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
-      secure:false, 
+      secure:true, 
       sameSite: "none",
     });
     console.log('Cookie envoyé :', res.getHeaders()['set-cookie']);

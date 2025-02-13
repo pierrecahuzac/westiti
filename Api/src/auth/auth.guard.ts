@@ -47,7 +47,6 @@ export class AuthGuard implements CanActivate {
       request['user'] = payload;
     } catch {
       // @ts-ignore
-      console.error('❌ Erreur lors de la vérification du token:', error);
       throw new UnauthorizedException();
     }
     return true;
