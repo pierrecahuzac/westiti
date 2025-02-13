@@ -1,7 +1,17 @@
 api: 
   dashboard: true
   # insecure: true
-
+tls:
+  stores:
+    default:
+      defaultCertificate:
+        certFile: ../certs/cert.pem
+        keyFile: ../certs/key.pem
+  certificates:
+     - certFile: ../certs/cert.pem
+       keyFile: ../certs/key.pem
+       stores:
+         - default
 # tls: 
 #    certificates:
 #      - certFile: /etc/letsencrypt/live/${DOMAIN}/fullchain.pem
@@ -16,8 +26,8 @@ entryPoints:
   web:
     address: ":80"
   # websecure si https
-  # websecure:   
-  #   address: ":443"
+  websecure:   
+    address: ":443"
 # certificatesResolvers:
 #   westiti-resolver:
 #     acme:

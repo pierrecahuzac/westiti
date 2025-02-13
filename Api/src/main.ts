@@ -4,12 +4,13 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import * as cookieParser from 'cookie-parser';
 import * as fs from 'fs';
+import path from 'path';
 import helmet from 'helmet';
 
 async function bootstrap() {
   const httpsOptions = {
-    key: fs.readFileSync('../certs/key.pem'),
-    cert: fs.readFileSync('../certs/cert.pem'),
+    key: fs.readFileSync(path.join(__dirname, './certs', 'key.pem')),
+  cert: fs.readFileSync(path.join(__dirname, './certs', 'cert.pem')),
   };
   const app = await NestFactory.create(AppModule, { httpsOptions });
   app.use(cookieParser());
