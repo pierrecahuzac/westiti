@@ -19,3 +19,7 @@ traefik/acme.json
 /App/cypress
 /App/coverage
 ./App/coverage
+certs
+./certs
+/Api/certs
+./Api/certs
