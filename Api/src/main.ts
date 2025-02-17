@@ -41,8 +41,8 @@ async function bootstrap() {
     .setVersion('0.0.1')
     .addTag('westiti')
     .build();
-  /* const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, documentFactory); */
+ const documentFactory = () => SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, documentFactory);
 
   app.useGlobalPipes(new ValidationPipe());
 
