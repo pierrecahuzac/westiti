@@ -6,6 +6,8 @@ import "./styles/vars.scss";
 import "./styles/reset.scss";
 import "./styles/index.scss";
 
+
+
 createRoot(document.getElementById("root")!).render(
   /*   <StrictMode> */
   <LoaderProvider>
